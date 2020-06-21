@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+
+  <div class="col-7">
+    <div class="card text-white bg-secondary mb-3 mt-3">
+      <div class="card-header"><h5>Add patient</h5></div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" name="patient-name" class="form-control" id="exampleInputEmail1"
+                   [(ngModel)]="patientName">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Age</label>
+            <input type="number" name="patient-age" class="form-control" id="exampleInputPassword1"
+                   [(ngModel)]="patientAge">
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addPatient()">Add patient</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let patient of patients" class="col-7">
+    <div class="shadow p-3 mt-4 bg-white rounded">
+      <div class="row">
+
+        <div class="col-6">
+          Name: {{patient.name}}
+        </div>
+
+        <div class="col-6">
+          <div class="row">
+            <div class="col-9">
+              Age: {{patient.age}}
+            </div>
+            <div class="col-3">
+              <span class="badge badge-pill badge-danger" (click)="deletePatient()">Delete</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

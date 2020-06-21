@@ -7,18 +7,24 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import {RouterModule} from "@angular/router";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PatientComponent } from './patient/patient.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PatientComponent
   ],
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
