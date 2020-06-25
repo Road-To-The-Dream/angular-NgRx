@@ -10,6 +10,7 @@ import {RouterModule} from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientComponent } from './patient/patient.component';
 import {FormsModule} from "@angular/forms";
+import {patientsReducer} from "./ngrx/reducers/patients.reducer";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {FormsModule} from "@angular/forms";
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({patients: patientsReducer}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),

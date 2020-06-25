@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {PatientModel} from "./patient.model";
 
 @Component({
   selector: 'app-patient',
@@ -7,15 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientComponent {
 
-  public patients = [
+  public patients: PatientModel[] = [
     {
       name: "Ivan",
-      age: "22",
+      age: 22,
       date: Date.now()
     },
     {
       name: "Andrey",
-      age: "25",
+      age: 25,
       date: Date.now()
     }
   ];
@@ -23,9 +25,10 @@ export class PatientComponent {
   public patientName = '';
   public patientAge = 1;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   addPatient() {
+    // this.store.dispatch(addPatient({patient: {name: this.patientName, age: this.patientAge, date: Date.now()}}))
   }
 
   deletePatient() {

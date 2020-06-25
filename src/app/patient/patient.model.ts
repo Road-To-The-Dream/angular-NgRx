@@ -1,4 +1,5 @@
 export interface PatientModel {
   name: string;
-  age: number
+  age: number;
+  date: number
 }
