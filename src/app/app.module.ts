@@ -6,11 +6,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientComponent } from './patient/patient.component';
-import {FormsModule} from "@angular/forms";
-import {patientsReducer} from "./ngrx/reducers/patients.reducer";
+import {FormsModule} from '@angular/forms';
+import {baseReducer} from './ngrx/reducers';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {patientsReducer} from "./ngrx/reducers/patients.reducer";
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
-    StoreModule.forRoot({patients: patientsReducer}, {}),
+    StoreModule.forRoot(baseReducer),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
