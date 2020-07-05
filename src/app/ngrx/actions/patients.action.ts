@@ -1,14 +1,12 @@
-import {Action} from "@ngrx/store";
-import {PatientModel} from "../../patient/patient.model";
+import {createAction, props} from '@ngrx/store';
+import {PatientModel} from '../../patient/patient.model';
 
-export enum PatientsActions {
-  AddPatient = '[Patient] add',
-}
+export const patientAdd = createAction(
+  '[Patient] add',
+  props<{patient: PatientModel}>()
+);
 
-export class AddPatient implements Action {
-  readonly type = PatientsActions.AddPatient
-
-  constructor(public payload: {patient: PatientModel}) {}
-}
-
-export type PatientsUnion = AddPatient;
+export const patientDelete = createAction(
+  '[Patient] delete',
+  props<{patientId: number}>()
+);
