@@ -1,38 +1,36 @@
-import { Component } from '@angular/core';
-import {Store} from "@ngrx/store";
-import {PatientModel} from "./patient.model";
+import {Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {patientAdd, patientDelete} from '../ngrx/actions/patients.action';
+import * as PatientsSelectors from '../ngrx/selectors/patient.selector';
+import {PatientModel} from './patient.model';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
-export class PatientComponent {
+export class PatientComponent implements OnInit {
 
-  public patients: PatientModel[] = [
-    {
-      name: "Ivan",
-      age: 22,
-      date: Date.now()
-    },
-    {
-      name: "Andrey",
-      age: 25,
-      date: Date.now()
-    }
-  ];
-
+  public patients: PatientModel[] = [];
   public patientName = '';
   public patientAge = 1;
 
-  constructor(private store: Store) { }
+  protected patients$: Observable<Array<PatientModel>> = this.store.pipe(select(PatientsSelectors.selectPatients));
 
-  addPatient() {
-    // this.store.dispatch(addPatient({patient: {name: this.patientName, age: this.patientAge, date: Date.now()}}))
+  constructor(private store: Store) {
   }
 
-  deletePatient() {
+  public ngOnInit() {
+    this.patients$.subscribe((patients) => {this.patients = patients;});
+  }
 
+  addPatient() {
+    this.store.dispatch(patientAdd({patient: {id: 3, name: this.patientName, age: this.patientAge, date: Date.now()}}));
+  }
+
+  deletePatient(id: number) {
+    this.store.dispatch(patientDelete({patientId: id}));
   }
 
 }

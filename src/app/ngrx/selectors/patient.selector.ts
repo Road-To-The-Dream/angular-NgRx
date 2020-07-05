@@ -1,24 +1,11 @@
-import {PatientModel} from "../../patient/patient.model";
-import {createFeatureSelector, createSelector} from "@ngrx/store";
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {PatientModel} from '../../patient/patient.model';
 
-export interface State {
-  patients: PatientModel[]
-}
+export const selectPatientsState = createFeatureSelector('patients');
 
-const selectPatients = (state: State) => state.patients;
+export const selectPatientsLists = createSelector(selectPatientsState, (state: any) => state);
 
-export const selectPatientsList = createSelector(
-  selectPatients,
-  (state: State) => state.patients
-)
-
-// export interface State {
-//   patients: PatientModel[]
-// }
-//
-// const selectPatients = createFeatureSelector<State>('patients');
-//
-// export const selectPatientsList = createSelector(
-//   selectPatients,
-//   (state: State) => state.patients
-// )
+export const selectPatients = createSelector(
+  selectPatientsLists,
+  (state: PatientModel[]) => state
+);
