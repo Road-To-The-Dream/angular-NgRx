@@ -1,11 +1,10 @@
 import {ActionReducerMap} from '@ngrx/store';
-import {PatientModel} from '../../patient/patient.model';
-import {patientReducer} from './patients.reducer';
+import * as Patients from './patients.reducer';
 
 class AppState {
-  patients: PatientModel[];
+  patientsComponent: Patients.State
 }
 
-export const baseReducer: ActionReducerMap<AppState> = {
-  patients: patientReducer,
+export const baseReducers: ActionReducerMap<any> = {
+  patientsComponent: Patients.patientsReducer
 };

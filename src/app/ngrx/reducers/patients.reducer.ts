@@ -3,12 +3,10 @@ import {PatientsUnion, PatientsActions} from "../actions/patients.action";
 
 export interface State {
   patients: PatientModel[],
-  showSpinner: boolean,
 }
 
 export const initialState: State = {
   patients: [],
-  showSpinner: false
 };
 
 export function patientsReducer(state: State = initialState, action: PatientsUnion) {
@@ -28,5 +26,6 @@ export function patientsReducer(state: State = initialState, action: PatientsUni
         ...state,
         patients: state.patients.filter(patient => patient.id !== action.payload.id)
       };
+    default: return state;
   }
 }

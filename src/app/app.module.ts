@@ -10,7 +10,10 @@ import {RouterModule} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientComponent } from './patient/patient.component';
 import {FormsModule} from '@angular/forms';
-import {baseReducer} from './ngrx/reducers';
+import {baseReducers} from './ngrx/reducers';
+import {PatientService} from "./services/patient.service";
+import {HttpClientModule} from "@angular/common/http";
+import {PatientsEffects} from "./ngrx/effects/patient.effect";
 
 @NgModule({
   declarations: [
@@ -20,7 +23,7 @@ import {baseReducer} from './ngrx/reducers';
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
-    StoreModule.forRoot(baseReducer),
+    StoreModule.forRoot(baseReducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
