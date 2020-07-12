@@ -20,3 +20,5 @@ export class DeletePatient implements Action {
   readonly type = PatientsActions.DeletePatients;
   constructor(public payload: {id: number}) {}
 }
+
+export type PatientsUnion = GetPatient | AddPatient | DeletePatient
