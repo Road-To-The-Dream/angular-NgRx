@@ -1,15 +1,15 @@
 import {PatientModel} from "../../patient/patient.model";
 import {PatientsUnion, PatientsActions} from "../actions/patients.action";
 
-export interface State {
+export interface PatientsState {
   patients: PatientModel[],
 }
 
-export const initialState: State = {
+export const initialState: PatientsState = {
   patients: [],
 };
 
-export function patientsReducer(state: State = initialState, action: PatientsUnion) {
+export function patientsReducer(state: PatientsState = initialState, action: PatientsUnion) {
   switch (action.type) {
     case PatientsActions.GetPatients:
       return {
