@@ -21,26 +21,40 @@
     </div>
   </div>
 
-  <div *ngFor="let patient of patients" class="col-7">
-    <div class="shadow p-3 mt-4 bg-white rounded">
-      <div class="row">
+</div>
 
-        <div class="col-6">
-          Name: {{patient.name}}
-        </div>
+<div class="row justify-content-center">
+  <div class="col-7">
 
-        <div class="col-6">
-          <div class="row">
-            <div class="col-9">
-              Age: {{patient.age}}
-            </div>
-            <div class="col-3">
-              <span class="badge badge-pill badge-danger" (click)="deletePatient(patient.id)">Delete</span>
-            </div>
-          </div>
-        </div>
-
+    <div class="spinner-block" *ngIf="showSpinner">
+      <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
+
+    <div *ngFor="let patient of patients">
+      <div class="shadow p-3 mt-4 bg-white rounded">
+        <div class="row">
+
+          <div class="col-6">
+            Name: {{patient.name}}
+          </div>
+
+
+          <div class="col-6">
+            <div class="row">
+              <div class="col-9">
+                Age: {{patient.age}}
+              </div>
+              <div class="col-3">
+                <span class="badge badge-pill badge-danger" (click)="deletePatient(patient.id)">Delete</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

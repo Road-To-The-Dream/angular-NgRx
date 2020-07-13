@@ -25,12 +25,13 @@ import {PatientsEffects} from "./ngrx/effects/patient.effect";
     BrowserModule,
     StoreModule.forRoot(baseReducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([PatientsEffects]),
     StoreRouterConnectingModule.forRoot(),
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
